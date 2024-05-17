@@ -15,10 +15,14 @@ Bomb(){
     sprite.setTexture(tex);
     sprite.setScale(0.6,0.6);
     destroyed=0;
+    
 }
 
 void update(){
+    if(!destroyed)
     sprite.move(0,speed);
+    else
+    sprite.setPosition(-10,-10);
 }
 
 

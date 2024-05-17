@@ -51,6 +51,7 @@ Sprite spBomb;
 string type;
 int Score;
 Invader(){
+    
     bomb.loadFromFile("img/enemy_laser.png");
     spBomb.setTexture(bomb);
 }
@@ -87,7 +88,7 @@ Alpha(){
     tex.loadFromFile("img/enemy_1.png");
     sprite.setTexture(tex);
     sprite.setScale(0.6,.6);
-    interval=3;
+    interval=1;
     Score=10;
     shootTime=0;
     type="Alpha";
@@ -105,6 +106,9 @@ if(level ==1){
     xPos=new int[12];
     yPos=new int[12];
     destroyed=new bool[num];
+    for(int i=0;i<num;i++){
+        destroyed[i]=0;
+    }
         for(int j=0;j<5;j++){
             xPos[j]=(j+1)*100+30;
             yPos[j]=100;
@@ -121,10 +125,15 @@ if(level ==1){
 }
 else if(level==4){
     num=13;
-    int centX=340,centY=300;
+    
+    
+    int centX=340,centY=250;
     xPos=new int[num];
     yPos=new int[num];
     destroyed=new bool[num];
+    for(int i=0;i<num;i++){
+        destroyed[i]=0;
+    }
     xPos[0] = centX - 200;
     yPos[0] = centY;
     xPos[1] = centX + 200;
@@ -164,7 +173,7 @@ Beta(){
     tex.loadFromFile("img/enemy_2.png");
     sprite.setTexture(tex);
     sprite.setScale(0.6,.6);
-    interval=2;
+    interval=0.8;
     Score=20;
     shootTime=0;
     type="Beta";
@@ -175,12 +184,17 @@ Beta(){
 
 void initialize(int level){
 if(level ==2){
+    
     num=12;
     xPos=new int[num];
     yPos=new int[num];
+
     int radius=200;
     destroyed=new bool[num];
-    int centX=350,centY=270;
+    for(int i=0;i<num;i++){
+        destroyed[i]=0;
+    }
+    int centX=350,centY=230;
 
     for (int i = 0; i < num; i++) {
     float angle = 2 * M_PI * i / num;
@@ -190,10 +204,14 @@ if(level ==2){
     
 }
 else if(level==5){
+    
     num=14;
     xPos=new int[num];
     yPos=new int[num];
     destroyed=new bool[num];
+    for(int i=0;i<num;i++){
+        destroyed[i]=0;
+    }
     int centX = 340;
     int centY = 250;
     float angle = 0;
@@ -224,7 +242,7 @@ Gamma(){
     tex.loadFromFile("img/enemy_3.png");
     sprite.setTexture(tex);
     sprite.setScale(0.6,.6);
-    interval=0.9;
+    interval=0.5;
     Score=30;
     shootTime=0;
     type="Gamma";
@@ -236,10 +254,14 @@ Gamma(){
 
 void initialize(int level){
 if(level ==3){
+    
     num=9;
     xPos=new int[num];
     yPos=new int[num];
     destroyed=new bool[num];
+    for(int i=0;i<num;i++){
+        destroyed[i]=0;
+    }
 
     for (int i = 0; i <5; i++) {
         xPos[i] = (i)*100 +100;

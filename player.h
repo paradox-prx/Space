@@ -6,12 +6,14 @@ class Player{
 public:
 Texture tex;
 Sprite sprite;
-float speed=0.8;
+float speed=1.2;
 int x,y,currentBullet,bulletSize;
 Bullet* bullet;
 bool tilt;
 int lives;
 int score;
+bool Fire;
+bool power;
 Player(std::string png_path)
 {
 tex.loadFromFile(png_path);
@@ -24,12 +26,17 @@ bulletSize=100;
 bullet=new Bullet[bulletSize];
 tilt=0;
 lives=3;
+Fire=0;
+power=0;
+score=0;
 }
 void fire()
 {
 if(currentBullet>bulletSize){
 	currentBullet=0;
 }
+
+
 if(tilt){
 	
 	bullet[currentBullet].tex.loadFromFile("img/PNG/Lasers/laserBlue01R.png");
@@ -43,6 +50,13 @@ bullet[currentBullet].sprite.setPosition(xpos,ypos);
 currentBullet++;
 
 
+}
+
+void reset(){
+	sprite.setPosition(340,700);
+	for(int i=0;i<currentBullet;i++){
+		bullet[i].destroyed=1;
+	}
 }
 void move(std::string s){
 float delta_x=0,delta_y=0;
